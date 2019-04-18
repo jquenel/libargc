@@ -1,4 +1,4 @@
-NAME=		libargc
+NAME=		libargc.a
 
 ##
 ##		RESSOURCES
@@ -10,11 +10,27 @@ OBJ_PATH=	obj
 
 CPPFLAGS=	-Iinclude
 
-SRC_NAME=	ft_putchar.c\
+SRC_NAME=	ft_putcharfd.c\
+			ft_putstrfd.c\
+			ft_strdup.c\
+			ft_strlen.c\
+			ft_strcmp.c\
+			ft_atoi.c\
+			ft_putnbrfd.c\
+			\
 			ft_argnew.c\
 			ft_argdel.c\
 			ft_argpushf.c\
 			ft_argpushb.c\
+			ft_argprint.c\
+			\
+			ap_new.c\
+			ap_del.c\
+			ap_pushb.c\
+			ap_addrule.c\
+			ap_parse.c\
+			ap_printfd.c\
+			\
 
 SRC=		$(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
@@ -37,7 +53,7 @@ LIBS=
 LDLIBS=		$(LDFLAGS) $(LIBS)
 
 ##
-##		Compile using the program's name to recompile that program.
+##		Compile using the lib's name to compile normally.
 ##		Compile with test for special testing purposes.
 ##
 
@@ -52,6 +68,12 @@ $(OBJ_PATH)/%.o:$(SRC_PATH)/%.c
 				@mkdir $(OBJ_PATH) 2> /dev/null || true
 				$(CC) $(CFLAGS) -o $@ -c $< $(CPPFLAGS)
 
+
+test:			$(NAME)
+				$(CC) $(CFLAGS) -o argctest test.c  $(CPPFLAGS) -L. -largc
+
+retest:			tclean test
+
 ##
 ##		Use fclean to clean this program.
 ##
@@ -63,6 +85,10 @@ clean:
 fclean:			clean
 				@rm -f $(NAME)
 				@echo "fclean"
+
+tclean:			fclean
+				@rm argctest
+				@echo "tclean"
 
 re:				fclean all
 
