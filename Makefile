@@ -11,6 +11,10 @@ OBJ_PATH=	obj
 CPPFLAGS=	-Iinclude
 
 SRC_NAME=	ft_putchar.c\
+			ft_argnew.c\
+			ft_argdel.c\
+			ft_argpushf.c\
+			ft_argpushb.c\
 
 SRC=		$(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
