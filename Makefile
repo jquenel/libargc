@@ -31,6 +31,9 @@ SRC_NAME=	ft_putcharfd.c\
 			ap_parse.c\
 			ap_printfd.c\
 			\
+			parsednew.c\
+			parseddel.c\
+			\
 
 SRC=		$(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

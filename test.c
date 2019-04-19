@@ -10,7 +10,7 @@ int		main(int argc, char const **argv)
 {
 	t_argparser		*aplst;
 	t_argparser		*parser;
-	t_arg			*args;
+	t_parsed		*parsed;
 
 	parser = ap_new("foo", filler);
 	ap_addrule(parser, 'a', T_STR);
@@ -24,12 +24,12 @@ int		main(int argc, char const **argv)
 
 	ap_printfd(aplst, 1);
 
-	if (!(args = ap_parse(aplst, argc, argv)))
+	if (!(parsed = ap_parse(aplst, argc, argv)))
 		ft_putstrfd("failed to parse\n", 1);
 	else
 	{
 		ft_putstrfd("did not fail to parse\n", 1);
-		ft_argprint(args, 1);
+		ft_argprint(parsed->args, 1);
 	}
 	return (1);
 }

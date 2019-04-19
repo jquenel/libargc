@@ -53,7 +53,7 @@ static t_arg		*parse_arg(int *i, int argc, char const **argv,
 	return (arg);
 }
 
-t_arg				*ap_parse(t_argparser *aplst, int argc, char const **argv)
+t_parsed			*ap_parse(t_argparser *aplst, int argc, char const **argv)
 {
 	int			i;
 	t_arg		*args;
@@ -78,5 +78,5 @@ t_arg				*ap_parse(t_argparser *aplst, int argc, char const **argv)
 		parser->flags |= argnew->flag;
 		args = ft_argpushb(args, argnew);
 	}
-	return (args);
+	return (parsednew(args, parser));
 }
