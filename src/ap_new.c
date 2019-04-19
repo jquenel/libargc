@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "libargc.h"
 
-t_argparser		*ap_new(char *key)
+t_argparser		*ap_new(char *key, int (*f)(t_arg *, int))
 {
 	t_argparser	*parser;
 	size_t		i;
@@ -13,13 +13,15 @@ t_argparser		*ap_new(char *key)
 		free(parser);
 		return (NULL);
 	}
+	parser->key = key;
 	i = 0;
 	while (i < 32)
 	{
 		parser->types[i] = 0;
 		i++;
 	}
-	parser->key = key;
+	parser->f = f;
+	parser->flags = 0;
 	parser->next = NULL;
 	return (parser);
 }

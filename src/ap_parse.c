@@ -4,7 +4,6 @@ static t_argparser	*find_parser(t_argparser *aplst, char const *key)
 {
 	while (aplst)
 	{
-		ft_putstrfd((char*)key, 1);
 		if (!(ft_strcmp(aplst->key, key)))
 			return (aplst);
 		aplst = aplst->next;
@@ -76,6 +75,7 @@ t_arg				*ap_parse(t_argparser *aplst, int argc, char const **argv)
 			ft_argdel(args);
 			return (NULL);
 		}
+		parser->flags |= argnew->flag;
 		args = ft_argpushb(args, argnew);
 	}
 	return (args);

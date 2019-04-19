@@ -1,19 +1,25 @@
 #include "libargc.h"
 
+static int	filler(t_arg *args, int flags)
+{
+	(void)args;
+	return (flags);
+}
+
 int		main(int argc, char const **argv)
 {
 	t_argparser		*aplst;
 	t_argparser		*parser;
 	t_arg			*args;
 
-	parser = ap_new("foo");
+	parser = ap_new("foo", filler);
 	ap_addrule(parser, 'a', T_STR);
 	ap_addrule(parser, 'b', T_INT);
 	ap_addrule(parser, 'c', T_NO);
 	
 	aplst = parser;
 
-	parser = ap_new("bar");
+	parser = ap_new("bar", filler);
 	aplst = ap_pushb(aplst, parser);
 
 	ap_printfd(aplst, 1);

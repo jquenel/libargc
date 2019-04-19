@@ -8,7 +8,6 @@ typedef			char	t_argtype;
 # define T_STR	's'
 # define T_NO	'n'
 
-
 /*
 **	t_arg
 **	The goal of this utility is to return a chained list of those.
@@ -46,18 +45,20 @@ void			ft_putnbrfd(int nb, int fd);
 **	t_argparser
 **	Stores the parsing rules.
 **
-**
-**
+**	the function should be the one to be called with the result of ap_parse
+**	they should accept a t_arg list and a int containing active flags
 */
 
 typedef struct	s_argparser
 {
 	t_argtype			types[32];
+	int					flags;
+	int					(*f)(t_arg *, int);
 	char				*key;
 	struct s_argparser	*next;
 }				t_argparser;
 
-t_argparser		*ap_new(char *key);
+t_argparser		*ap_new(char *key, int (*f)(t_arg *, int));
 t_argparser		*ap_pushb(t_argparser *aplst, t_argparser *apnew);
 void			ap_del(t_argparser *aplst);
 int				ap_addrule(t_argparser *aplst, char flag, t_argtype type);
