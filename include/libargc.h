@@ -3,7 +3,8 @@
 
 # include <string.h>
 
-typedef			char	t_argtype;
+typedef	char	t_argtype;
+
 # define T_INT	'i'
 # define T_STR	's'
 # define T_NO	'n'
@@ -34,11 +35,13 @@ typedef struct	s_arg
 **	they should accept a t_arg list and a int containing active flags
 */
 
+typedef int (*t_pfunc)(t_arg *, int);
+
 typedef struct	s_argparser
 {
 	t_argtype			types[32];
 	int					flags;
-	int					(*f)(t_arg *, int);
+	t_pfunc				f;
 	char				*key;
 	struct s_argparser	*next;
 }				t_argparser;
@@ -47,7 +50,7 @@ typedef struct	s_parsed
 {
 	t_arg				*args;
 	int					flags;
-	int					(*f)(t_arg *, int);
+	t_pfunc				f;
 }				t_parsed;
 
 t_arg			*ft_argnew(char flag, t_argtype type, char const *content);
@@ -64,7 +67,7 @@ int				ft_putcharfd(char c, int fd);
 int				ft_putstrfd(char *str, int fd);
 void			ft_putnbrfd(int nb, int fd);
 
-t_argparser		*ap_new(char *key, int (*f)(t_arg *, int));
+t_argparser		*ap_new(char *key, t_pfunc f);
 t_argparser		*ap_pushb(t_argparser *aplst, t_argparser *apnew);
 void			ap_del(t_argparser *aplst);
 int				ap_addrule(t_argparser *aplst, char flag, t_argtype type);

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "libargc.h"
 
-t_argparser		*ap_new(char *key, int (*f)(t_arg *, int))
+t_argparser		*ap_new(char *key, t_pfunc f)
 {
 	t_argparser	*parser;
 	size_t		i;
