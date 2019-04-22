@@ -16,13 +16,13 @@ t_arg		*ft_argnew(char flag, t_argtype type, char const *content)
 		argnew->flag |= 1 << (flag - 'a');
 	argnew->type = type;
 	if (type == T_INT)
-		argnew->intcontent = ft_atoi(content);
+		argnew->intcnt = ft_atoi(content);
 	else
-		argnew->intcontent = 0;
+		argnew->intcnt = 0;
 	if (type == T_STR)
-		argnew->strcontent = content;
+		argnew->strcnt = content;
 	else
-		argnew->strcontent = NULL;
+		argnew->strcnt = NULL;
 	argnew->next = NULL;
 	return (argnew);
 }

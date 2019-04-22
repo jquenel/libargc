@@ -27,10 +27,10 @@ void		ft_argprint(t_arg *arglst, int fd)
 		ft_putcharfd('\n', fd);
 		ft_putcharfd(tmp->type, fd);
 		ft_putcharfd('\n', fd);
-		ft_putnbrfd(tmp->intcontent, fd);
+		ft_putnbrfd(tmp->intcnt, fd);
 		ft_putcharfd('\n', fd);
-		if (tmp->strcontent)
-			ft_putstrfd((char *)(tmp->strcontent), fd);
+		if (tmp->strcnt)
+			ft_putstrfd((char *)(tmp->strcnt), fd);
 		ft_putcharfd('\n', fd);
 		ft_putcharfd('\n', fd);
 		tmp = tmp->next;
