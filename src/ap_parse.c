@@ -31,14 +31,13 @@ static t_arg		*parse_arg(int *i, int argc, char const **argv,
 	t_arg		*arg;
 	t_argtype	type;
 
+	flag = 0;
+	type = T_STR;
 	if (!(argv[*i][0] == '-') || !ft_strcmp("--", argv[*i]))
 		end_flags = 1;
-	if (end_flags)
-	{
-		type = T_STR;
-		flag = 0;
-	}
-	else
+	if (!ft_strcmp("--", argv[*i]))
+		type = T_NO;
+	if (end_flags == 0)
 	{
 		if (!(flag = get_flag(argv[*i])))
 			return (NULL);
