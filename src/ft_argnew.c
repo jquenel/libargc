@@ -5,7 +5,7 @@ t_arg		*ft_argnew(char flag, t_argtype type, char const *content)
 {
 	t_arg	*argnew;
 
-	if (!content || !content[0])
+	if (!content)
 		return (NULL);
 	if (flag != 0 && (flag < 'a' || flag > 'z'))
 		return (NULL);
