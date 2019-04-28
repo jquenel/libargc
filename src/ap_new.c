@@ -13,7 +13,6 @@ t_argparser		*ap_new(char *key, t_pfunc f)
 		free(parser);
 		return (NULL);
 	}
-	parser->key = key;
 	i = 0;
 	while (i < 32)
 	{

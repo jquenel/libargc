@@ -31,5 +31,7 @@ int		main(int argc, char const **argv)
 		ft_putstrfd("did not fail to parse\n", 1);
 		ft_argprint(parsed->args, 1);
 	}
+
+	ap_del(aplst);
 	return (1);
 }

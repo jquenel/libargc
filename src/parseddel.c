@@ -3,5 +3,6 @@
 
 void		parseddel(t_parsed *parsed)
 {
+	ft_argdel(parsed->args);
 	free(parsed);
 }

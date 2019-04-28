@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "libargc.h"
 
+#include <stdio.h>
 void			ap_del(t_argparser *parser)
 {
 	t_argparser		*tofree;
@@ -13,8 +14,7 @@ void			ap_del(t_argparser *parser)
 	{
 		tofree = tmp;
 		tmp = tmp->next;
-		if (tofree->key)
-			free(tofree->key);
+		free(tofree->key);
 		free(tofree);
 	}
 }
