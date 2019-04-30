@@ -60,6 +60,7 @@ typedef struct	s_arg
 **
 **	the function should be the one to be called with the result of ap_parse
 **	they should accept a t_arg list and a int containing active flags
+**  f is the function that should be called with the parsed args and flags
 */
 
 typedef int (*t_pfunc)(t_arg *, int);
@@ -95,6 +96,7 @@ int				ft_putstrfd(char *str, int fd);
 void			ft_putnbrfd(int nb, int fd);
 
 t_argparser		*ap_new(char *key, t_pfunc f);
+t_argparser		*ap_duplicate(t_argparser *parser, char *newkey, t_pfunc newf);
 t_argparser		*ap_pushb(t_argparser *aplst, t_argparser *apnew);
 void			ap_del(t_argparser *aplst);
 int				ap_addrule(t_argparser *aplst, char flag, t_argtype type);

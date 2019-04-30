@@ -26,6 +26,7 @@ SRC_NAME=	ft_putcharfd.c\
 			\
 			ap_new.c\
 			ap_del.c\
+			ap_duplicate.c\
 			ap_pushb.c\
 			ap_addrule.c\
 			ap_parse.c\
