@@ -60,6 +60,10 @@ typedef struct	s_arg
 # define FLAG_30	(1 << 30)
 # define FLAG_31	(1 << 31)
 
+# define FLAG_INT	FLAG_I
+# define FLAG_STR	FLAG_S
+# define FLAG_NO	FLAG_N
+
 /*
 **	t_argparser
 **	Stores the parsing rules.
