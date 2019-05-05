@@ -1,5 +1,17 @@
-#ifndef ARGC_H
-# define ARGC_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libargc.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jquenel <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/05 23:11:02 by jquenel           #+#    #+#             */
+/*   Updated: 2019/05/05 23:11:09 by jquenel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef LIBARGC_H
+# define LIBARGC_H
 
 # include <string.h>
 
@@ -73,7 +85,7 @@ typedef struct	s_arg
 **  f is the function that should be called with the parsed args and flags
 */
 
-typedef int (*t_pfunc)(t_arg *, int);
+typedef int		(*t_pfunc)(t_arg *, int);
 
 typedef struct	s_argparser
 {

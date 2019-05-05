@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jquenel <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/05 23:17:12 by jquenel           #+#    #+#             */
+/*   Updated: 2019/05/05 23:17:49 by jquenel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libargc.h"
 
 static int	filler(t_arg *args, int flags)
@@ -6,7 +18,7 @@ static int	filler(t_arg *args, int flags)
 	return (flags);
 }
 
-int		main(int argc, char const **argv)
+int			main(int argc, char const **argv)
 {
 	t_argparser		*aplst;
 	t_argparser		*parser;
@@ -16,14 +28,10 @@ int		main(int argc, char const **argv)
 	ap_addrule(parser, 'a', T_STR);
 	ap_addrule(parser, 'b', T_INT);
 	ap_addrule(parser, 'c', T_NO);
-	
 	aplst = parser;
-
 	parser = ap_new("bar", filler);
 	aplst = ap_pushb(aplst, parser);
-
 	ap_printfd(aplst, 1);
-
 	if (!(parsed = ap_parse(aplst, argc, argv)))
 		ft_putstrfd("failed to parse\n", 1);
 	else
@@ -31,7 +39,6 @@ int		main(int argc, char const **argv)
 		ft_putstrfd("did not fail to parse\n", 1);
 		ft_argprint(parsed->args, 1);
 	}
-
 	ap_del(aplst);
 	return (1);
 }

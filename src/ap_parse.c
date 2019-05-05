@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ap_parse.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jquenel <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/05 23:14:18 by jquenel           #+#    #+#             */
+/*   Updated: 2019/05/05 23:15:24 by jquenel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libargc.h"
 
 static t_argparser	*find_parser(t_argparser *aplst, char const *key)
@@ -43,9 +55,8 @@ static t_arg		*parse_arg(int *i, int argc, char const **argv,
 			return (NULL);
 		if (!(type = parser->types[(int)(flag - 'a')]))
 			return (NULL);
-		if (type != T_NO)	
-			if (++(*i) >= argc)
-				return (NULL);
+		if ((type != T_NO) && (++(*i) >= argc))
+			return (NULL);
 	}
 	arg = ft_argnew(flag, type, argv[*i]);
 	*i += 1;
