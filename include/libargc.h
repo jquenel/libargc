@@ -6,7 +6,7 @@
 /*   By: jquenel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 23:11:02 by jquenel           #+#    #+#             */
-/*   Updated: 2019/05/05 23:11:09 by jquenel          ###   ########.fr       */
+/*   Updated: 2019/05/08 17:31:03 by jquenel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ typedef	char	t_argtype;
 
 typedef struct	s_arg
 {
+	struct s_arg		*next;
 	int					flag;
-	t_argtype			type;
 	int					intcnt;
 	char const			*strcnt;
-	struct s_arg		*next;
+	t_argtype			type;
 }				t_arg;
 
 # define FLAG_A		(1 << 0)
@@ -89,18 +89,18 @@ typedef int		(*t_pfunc)(t_arg *, int);
 
 typedef struct	s_argparser
 {
-	t_argtype			types[32];
-	int					flags;
 	t_pfunc				f;
 	char				*key;
+	t_argtype			types[32];
 	struct s_argparser	*next;
+	int					flags;
 }				t_argparser;
 
 typedef struct	s_parsed
 {
 	t_arg				*args;
-	int					flags;
 	t_pfunc				f;
+	int					flags;
 }				t_parsed;
 
 t_arg			*ft_argnew(char flag, t_argtype type, char const *content);

@@ -6,7 +6,7 @@
 /*   By: jquenel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 23:14:18 by jquenel           #+#    #+#             */
-/*   Updated: 2019/05/05 23:15:24 by jquenel          ###   ########.fr       */
+/*   Updated: 2019/05/08 18:16:45 by jquenel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static char			get_flag(char const *arg)
 static t_arg		*parse_arg(int *i, int argc, char const **argv,
 								t_argparser *parser)
 {
+	t_arg		*arg;
 	static int	end_flags = 0;
 	char		flag;
-	t_arg		*arg;
 	t_argtype	type;
 
 	flag = 0;
@@ -65,10 +65,10 @@ static t_arg		*parse_arg(int *i, int argc, char const **argv,
 
 t_parsed			*ap_parse(t_argparser *aplst, int argc, char const **argv)
 {
-	int			i;
 	t_arg		*args;
 	t_arg		*argnew;
 	t_argparser	*parser;
+	int			i;
 
 	if (argc < 2 || !argv[1] || !argv[1][0])
 		return (NULL);
